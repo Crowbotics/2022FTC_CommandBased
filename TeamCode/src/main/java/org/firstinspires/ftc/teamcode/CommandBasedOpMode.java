@@ -1,3 +1,5 @@
+package org.firstinspires.ftc.teamcode;
+
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.Button;
@@ -6,30 +8,30 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import org.firstinspires.ftc.teamcode.commands.*;
+import org.firstinspires.ftc.teamcode.subsystems.*;
 
 @TeleOp(name="Command Based Op Mode")
 public class CommandBasedOpMode extends CommandOpMode {
 
-    MotorEx m_left, m_right;
+    //Declare Subsystems
     DriveSubsystem m_drive;
-    GamepadEx m_driverGamepad, m_auxGamepad;
-    Button m_armUpButton, m_armDownButton;
     ArmSubsystem m_arm;
     //CollectorSubsystem
 
+    //Declare Buttons
+    GamepadEx m_driverGamepad, m_auxGamepad;
+    Button m_armUpButton, m_armDownButton;
 
     //Commands
     ArcadeDriveCommand m_arcadeDriveCommand;
     MoveArmDownCommand m_armDownCommand;
     MoveArmUpCommand m_armUpCommand;
-    StopArmCommand m_stopArmCommand;
     HoldArmCommand m_holdArmCommand;
     //IntakeCommand
     //ReleaseCommand
 
     Crowbot m_crowbot;
-
-
 
     @Override
     public void initialize() {
@@ -55,19 +57,20 @@ public class CommandBasedOpMode extends CommandOpMode {
 
         m_armUpCommand = new MoveArmUpCommand(m_arm);
         m_armDownCommand = new MoveArmDownCommand(m_arm);
-        m_stopArmCommand = new StopArmCommand(m_arm);
         m_holdArmCommand = new HoldArmCommand(m_arm);
-
-
 
         register(m_drive);
         register(m_arm);
+
+        //Default Commands
         m_drive.setDefaultCommand(m_arcadeDriveCommand);
-        m_armUpButton.whenHeld(m_armUpCommand);
-        m_armDownButton.whenHeld(m_armDownCommand);
         m_arm.setDefaultCommand(m_holdArmCommand);
 
-        //schedule(new RunCommand(telemetry::update));
+        //Button Bindings
+        m_armUpButton.whenHeld(m_armUpCommand);
+        m_armDownButton.whenHeld(m_armDownCommand);
+
+
         schedule(new RunCommand(() -> telemetry.update()));
 
     }

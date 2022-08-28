@@ -1,3 +1,5 @@
+package org.firstinspires.ftc.teamcode.subsystems;
+
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
@@ -19,7 +21,7 @@ public class ArmSubsystem extends SubsystemBase {
         targetPosition = getEncoderValue();
         telemetry = t;
 
-        arm.setPositionTolerance(10);
+        arm.setPositionTolerance(25);
         arm.setPositionCoefficient(0.025);
     }
 
@@ -36,25 +38,31 @@ public class ArmSubsystem extends SubsystemBase {
         arm.encoder.reset();
     }
 
+    private void setTargetPosition(int modifier)
+    {
+        targetPosition = targetPosition + modifier;
+        targetPosition = Math.max(targetPosition, 0);
+        targetPosition = Math.min(targetPosition, 700);
+    }
+
     private void moveArmToTarget()
     {
         telemetry.addData("At Position?", arm.atTargetPosition());
-        arm.set(0.5);
+        arm.set(0.7);
     }
 
     public void moveArmUp() {
-        targetPosition++;
+        setTargetPosition(2);
         arm.setTargetPosition(targetPosition);
         moveArmToTarget();
     }
 
     public void moveArmDown() {
-        targetPosition--;
+        setTargetPosition(-2);
         arm.setTargetPosition(targetPosition);
         moveArmToTarget();
     }
 
-    //DOESN'T WORK YET
     public void holdArm() {
         moveArmToTarget();
     }

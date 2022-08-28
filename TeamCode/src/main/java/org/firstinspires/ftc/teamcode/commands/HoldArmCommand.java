@@ -1,6 +1,9 @@
+package org.firstinspires.ftc.teamcode.commands;
+
 import com.arcrobotics.ftclib.command.CommandBase;
 
-//DOESN'T WORK YET
+import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
+
 public class HoldArmCommand extends CommandBase {
 
     private final ArmSubsystem m_arm;
