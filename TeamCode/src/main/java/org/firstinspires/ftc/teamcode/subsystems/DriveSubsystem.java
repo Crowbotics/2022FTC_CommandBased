@@ -24,7 +24,7 @@ public class DriveSubsystem extends SubsystemBase {
                           Telemetry t) {
 
         m_leftMotor = new MotorEx(hMap, leftMotorName);
-        m_rightMotor = new MotorEx(hMap, leftMotorName);
+        m_rightMotor = new MotorEx(hMap, rightMotorName);
         m_leftEncoder = m_leftMotor.encoder;
         m_rightEncoder = m_rightMotor.encoder;
         WHEEL_DIAMETER = diameter;
@@ -64,6 +64,9 @@ public class DriveSubsystem extends SubsystemBase {
 
     public void periodic()
     {
+        telemetry.addData("Left Encoder ", getLeftEncoderVal());
+        telemetry.addData("Right Encoder ", getRightEncoderVal());
+        telemetry.addData("Distance ", getAverageEncoderDistance());
     }
 
 }
