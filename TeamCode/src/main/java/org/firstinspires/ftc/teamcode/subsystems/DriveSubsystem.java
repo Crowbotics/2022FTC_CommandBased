@@ -59,7 +59,7 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public double getAverageEncoderDistance(){
-        return(getLeftEncoderDistance() + getRightEncoderDistance())/2.0;
+        return(getLeftEncoderDistance() + -(getRightEncoderDistance()))/2.0;
     }
 
     public void periodic()

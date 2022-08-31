@@ -69,8 +69,8 @@ public class AutoOpMode extends CommandOpMode {
 
         waitForStart();
 
-        schedule(new DriveDistanceCommand(m_drive, -15, 0.3)
-                .andThen(new DriveDistanceCommand(m_drive, 15, -0.3)));
+        schedule(new DriveDistanceCommand(m_drive, -15, -0.3)
+                .andThen(new DriveDistanceCommand(m_drive, 15, 0.3)));
 
         // run the scheduler
         while (!isStopRequested() && opModeIsActive()) {
