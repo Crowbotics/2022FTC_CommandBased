@@ -75,6 +75,8 @@ public class CommandBasedOpMode extends CommandOpMode {
         //m_armDownCommand = new MoveArmDownCommand(m_arm);
        // m_holdArmCommand = new HoldArmCommand(m_arm);
 
+        //This is a test of my new branch
+
         //m_intakeCommand = new IntakeCommand(m_intake, IntakeCommand.Mode.IN);
         //m_reverseIntakeCommand = new IntakeCommand(m_intake, IntakeCommand.Mode.OUT);
         //m_stopIntakeCommand = new IntakeCommand(m_intake, IntakeCommand.Mode.STOP);
