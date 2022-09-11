@@ -13,6 +13,13 @@ public class MoveArmDownCommand extends CommandBase {
         addRequirements(subsystem);
     }
 
+    /**
+    public MoveArmDownCommand(MoveArmDownCommand m_armDownCommand, double v, double v1) {
+
+        m_arm =
+    }
+     */
+
     @Override
     public void execute(){
         m_arm.moveArmDown();

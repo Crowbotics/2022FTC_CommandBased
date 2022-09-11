@@ -5,6 +5,8 @@ import com.arcrobotics.ftclib.command.CommandBase;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 
+import java.util.Timer;
+
 public class IntakeCommand extends CommandBase {
 
     public enum Mode {

@@ -23,7 +23,7 @@ public class ArcadeDriveCommand extends CommandBase {
 
     @Override
     public void execute(){
-        m_drive.drive(m_forward.getAsDouble(), m_turn.getAsDouble());
+        m_drive.drive(0, m_forward.getAsDouble(), m_turn.getAsDouble(), 0);
     }
 
 }
